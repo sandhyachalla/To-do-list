@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><title>To do list</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div class="container">
+		<h1>My To-Do list</h1>
+			<div id="addItem">
+				<input type="text" placeholder="Tasks...">
+				<button onclick="newTask()" id="add">Add</button>
+				<div id="tasks" ></div>
+			</div>
+			
+	</div>
+
+	<script type="text/javascript">
+		function newTask(){
+			var task=document.querySelector('#addItem');
+			if(document.querySelector('#addItem input').value.length==0){
+				alert("please enter any task")
+
+			}
+			else{
+				document.querySelector('#tasks').innerHTML += `
+				<div class="task">
+					<span class="taskenter">
+					${document.querySelector('#addItem input').value}
+					</span>
+					<button class="del">delete</button>
+				</div>
+				`;
+				var nexttask=document.querySelectorAll(".del");
+				for(var i=0; i<nexttask.length; i++){
+            		nexttask[i].onclick = function(){
+                	this.parentNode.remove();
+                	}
+        		}
+			}
+		}
+	</script>
+</body>
+</html>
